@@ -5,7 +5,6 @@ import com.techcompany.backend.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,6 +46,10 @@ public class EmployeeService implements IEmployeeService {
                         existingEmployee.setLastName(partialEmployee.getLastName());
                     }
 
+                    if (partialEmployee.getAbout() != null) {
+                        existingEmployee.setAbout(partialEmployee.getAbout());
+                    }
+
                     if (partialEmployee.getPhoneNumber() != null) {
                         existingEmployee.setPhoneNumber(partialEmployee.getPhoneNumber());
                     }
@@ -59,8 +62,8 @@ public class EmployeeService implements IEmployeeService {
                         existingEmployee.setLocation(partialEmployee.getLocation());
                     }
 
-                    if (partialEmployee.getJobPositions() != null) {
-                        existingEmployee.setJobPositions(partialEmployee.getJobPositions());
+                    if (partialEmployee.getJobPosition() != null) {
+                        existingEmployee.setJobPosition(partialEmployee.getJobPosition());
                     }
 
                     return employeeRepository.save(existingEmployee);
