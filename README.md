@@ -72,7 +72,7 @@ To run the application, follow these steps:
    npm run dev
    ```
 
-4. Access the application in your web browser at `[http://localhost:5173](http://localhost:5173)`.
+4. Access the application in your web browser at [http://localhost:5173](http://localhost:5173).
 
 ## Contributing 🤝
 
