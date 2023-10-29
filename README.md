@@ -6,7 +6,7 @@ TechCompanySimpleProject is a straightforward CRUD (Create, Read, Update, Delete
 
 ### Features 🌟
 
-- ✨ Create new employee records, providing essential details like name, email, position, and department.
+- ✨ Create new employee records, providing essential details like name, email, about, position, and location.
 - 📄 View a list of all employees with a user-friendly and intuitive interface.
 - 📝 Update employee information, allowing you to edit and modify employee details as needed.
 - 🗑️ Delete employee records to keep your employee database up-to-date.
@@ -69,10 +69,10 @@ To run the application, follow these steps:
 
    ```bash
    # From the 'frontend' directory 🌐
-   npm start
+   npm run dev
    ```
 
-4. Access the application in your web browser at `http://localhost:3000`.
+4. Access the application in your web browser at `[http://localhost:5173](http://localhost:5173)`.
 
 ## Contributing 🤝
 
