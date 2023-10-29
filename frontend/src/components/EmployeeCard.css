@@ -1,0 +1,119 @@
+.card {
+  width: 32rem;
+  background-color: #ebeef8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  border-radius: 1.2rem;
+  box-shadow: 0.5rem 0.5rem 3rem rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.card .card-img {
+  width: 100%;
+  height: 26rem;
+  object-fit: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 0 100%);
+}
+
+.card .profile-img {
+  width: 15rem;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-top: -10rem;
+  z-index: 100;
+  border: 1rem solid #ebeef8;
+}
+
+.card h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin: 1.5rem 0;
+}
+
+.card .job-title {
+  color: #777;
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.card .about {
+  font-size: 1.5rem;
+  margin: 1.5rem 1.2rem;
+  font-style: italic;
+  text-align: center;
+  color: #333;
+}
+
+.card .btn {
+  padding: 1rem 2.5rem;
+  background-color: #885fc9;
+  border-radius: 2rem;
+  margin: 1rem 0;
+  text-transform: uppercase;
+  color: #eee;
+  font-size: 1.4rem;
+  transition: all 0.5s;
+}
+
+.card .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0.5rem 0.5rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.card .btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.card .social-media {
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem 0;
+  margin-top: 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.card .social-media .icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  outline: none;
+}
+
+.card .social-media i {
+  font-size: 3rem;
+  color: #55acee;
+  transition: all 0.5s;
+}
+
+.card .social-media i:hover {
+  color: #45e19f;
+  transform: scale(1.2);
+}
+
+@media screen and (min-width: 700px) {
+  .card {
+    margin: 2rem;
+    transition: transform 0.5s;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}

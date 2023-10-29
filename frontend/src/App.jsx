@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
-import { EmpleyeeCard } from "./components/EmpleyeeCard";
+import { EmployeeCard } from "./components/EmployeeCard";
 import "./App.css";
+import { ToolWrapper } from "./components/ToolWrapper";
 
 function App() {
+  const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
+
+  const handleSearch = () => {
+    console.log("Search");
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,9 +35,15 @@ function App() {
         <div className="container">
           <h1 className="heading">OUR EXCEPTIONAL TEAM</h1>
 
+          <ToolWrapper
+            search={search}
+            setSearch={setSearch}
+            handleSearch={handleSearch}
+          />
+
           <div className="card-wrapper">
             {employees.map((employee) => (
-              <EmpleyeeCard
+              <EmployeeCard
                 key={employee.id}
                 employee={employee}
                 setEmployees={setEmployees}

@@ -1,11 +1,33 @@
+import { useState } from "react";
+import { EmployeeSavePopup } from "./EmployeeSavePopup";
+import { EmployeeInfoPopup } from "./EmployeeInfoPopup";
 import CardBackground from "../assets/card-bg.jpg";
+import "./EmployeeCard.css";
 
-export const EmpleyeeCard = ({ employee, setEmployees }) => {
+export const EmployeeCard = ({ employee, setEmployees }) => {
+  const [isInfoPopupOpen, setInfoPopupOpen] = useState(false);
+  const [isEditPopupOpen, setEditPopupOpen] = useState(false);
+
   const profilePicture = `https://ui-avatars.com/api/?name=${employee?.firstName}+${employee?.lastName}&background=0D8ABC&color=fff&size=128`;
+
+  const handleOpenEditPopup = () => {
+    setEditPopupOpen(true);
+  };
+
+  const handleCloseEditPopup = () => {
+    setEditPopupOpen(false);
+  };
+
+  const handleOpenViewMore = () => {
+    setInfoPopupOpen(true);
+  };
+
+  const handleCloseViewMore = () => {
+    setInfoPopupOpen(false);
+  };
 
   const handleDeleteEmployee = async (employeeId) => {
     try {
-      // Make a DELETE request to the server to delete the employee
       const url = `http://localhost:8085/api/v1/techcompany/employee/${employeeId}`;
       const response = await fetch(url, {
         method: "DELETE",
@@ -15,7 +37,6 @@ export const EmpleyeeCard = ({ employee, setEmployees }) => {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // Remove the deleted employee from the local state
       setEmployees((prevEmployees) =>
         prevEmployees.filter((employee) => employee.id !== employeeId)
       );
@@ -36,22 +57,33 @@ export const EmpleyeeCard = ({ employee, setEmployees }) => {
 
       <p className="about">{employee.about}</p>
 
-      <a href="#" className="btn">
+      <button onClick={handleOpenViewMore} className="btn">
         View More
-      </a>
+      </button>
 
       <ul className="social-media">
         <li>
-          <a href="#">
+          <button onClick={handleOpenEditPopup} className="icon-button">
             <i className="fa-solid fa-pen-to-square"></i>
-          </a>
+          </button>
         </li>
         <li>
-          <a href="#" onClick={() => handleDeleteEmployee(employee.id)}>
+          <button
+            onClick={() => handleDeleteEmployee(employee.id)}
+            className="icon-button"
+          >
             <i className="fa-solid fa-trash"></i>
-          </a>
+          </button>
         </li>
       </ul>
+
+      {isInfoPopupOpen && (
+        <EmployeeInfoPopup employee={employee} onClose={handleCloseViewMore} />
+      )}
+
+      {isEditPopupOpen && (
+        <EmployeeSavePopup employee={employee} onClose={handleCloseEditPopup} />
+      )}
     </div>
   );
 };
