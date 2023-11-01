@@ -106,7 +106,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact 📧
 
-If you have any questions or need assistance, feel free to contact us:
+If you have any questions or need assistance, feel free to contact me:
 
 - Email: marvin.aguilar.jobs@gmail.com 📩
 - GitHub: [Marvin Aguilar](https://github.com/MarvinAguilar) 🚀
