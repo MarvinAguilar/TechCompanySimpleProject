@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { EmployeeSavePopup } from "./EmployeeSavePopup";
 
-export const ToolWrapper = ({ setEmployees }) => {
+export const ToolWrapper = ({ setEmployees, fetchEmployees }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [isSavePopupOpen, setSavePopupOpen] = useState(false);
 
@@ -70,7 +70,12 @@ export const ToolWrapper = ({ setEmployees }) => {
         </button>
       </div>
 
-      {isSavePopupOpen && <EmployeeSavePopup onClose={handleCloseSavePopup} />}
+      {isSavePopupOpen && (
+        <EmployeeSavePopup
+          onClose={handleCloseSavePopup}
+          fetchEmployees={fetchEmployees}
+        />
+      )}
     </>
   );
 };

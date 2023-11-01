@@ -7,24 +7,25 @@ import "./App.css";
 function App() {
   const [employees, setEmployees] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const url = "http://localhost:8085/api/v1/techcompany/employees";
-        const response = await axios.get(url);
+  const fetchEmployees = async () => {
+    try {
+      const url = "http://localhost:8085/api/v1/techcompany/employees";
+      const response = await axios.get(url);
 
-        if (response.status === 200) {
-          setEmployees(response.data);
-        } else {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-      } catch (error) {
-        console.error(error);
+      if (response.status === 200) {
+        setEmployees(response.data);
+      } else {
+        throw new Error(`HTTP error! Status: ${response.status}`);
       }
-    };
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    fetchData();
-  }, []);
+  // Use the useEffect to call the fetchEmployees function
+  useEffect(() => {
+    fetchEmployees();
+  }, [setEmployees]);
 
   return (
     <>
@@ -32,7 +33,10 @@ function App() {
         <div className="container">
           <h1 className="heading">OUR EXCEPTIONAL TEAM</h1>
 
-          <ToolWrapper setEmployees={setEmployees} />
+          <ToolWrapper
+            setEmployees={setEmployees}
+            fetchEmployees={fetchEmployees}
+          />
 
           {employees.length > 0 ? (
             <div className="card-wrapper">
@@ -41,6 +45,7 @@ function App() {
                   key={employee.id}
                   employee={employee}
                   setEmployees={setEmployees}
+                  fetchEmployees={fetchEmployees}
                 />
               ))}
             </div>

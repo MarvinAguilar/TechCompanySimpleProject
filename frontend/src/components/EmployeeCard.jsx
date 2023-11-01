@@ -6,7 +6,7 @@ import { EmployeeInfoPopup } from "./EmployeeInfoPopup";
 import CardBackground from "../assets/card-bg.jpg";
 import "./EmployeeCard.css";
 
-export const EmployeeCard = ({ employee, setEmployees }) => {
+export const EmployeeCard = ({ employee, setEmployees, fetchEmployees }) => {
   const [isInfoPopupOpen, setInfoPopupOpen] = useState(false);
   const [isEditPopupOpen, setEditPopupOpen] = useState(false);
 
@@ -90,7 +90,11 @@ export const EmployeeCard = ({ employee, setEmployees }) => {
       )}
 
       {isEditPopupOpen && (
-        <EmployeeSavePopup employee={employee} onClose={handleCloseEditPopup} />
+        <EmployeeSavePopup
+          employee={employee}
+          onClose={handleCloseEditPopup}
+          fetchEmployees={fetchEmployees}
+        />
       )}
 
       <ToastContainer position="top-right" autoClose={2000} />

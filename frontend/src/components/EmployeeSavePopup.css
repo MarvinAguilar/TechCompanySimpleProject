@@ -45,7 +45,8 @@
 }
 
 .generalInfo input,
-.generalInfo textarea {
+.generalInfo textarea,
+.generalInfo select {
   width: 100%;
   padding: 0.7rem;
   font-size: 1.4rem;
@@ -55,7 +56,8 @@
 }
 
 .generalInfo input:focus,
-.generalInfo textarea:focus {
+.generalInfo textarea:focus,
+.generalInfo select:focus {
   border-color: #885fc9;
   box-shadow: 0 0 0.2rem #885fc9;
   outline: none;

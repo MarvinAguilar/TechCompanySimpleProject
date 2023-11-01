@@ -5,7 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./EmployeeSavePopup.css";
 
-export const EmployeeSavePopup = ({ employee, onClose }) => {
+export const EmployeeSavePopup = ({ employee, onClose, fetchEmployees }) => {
   const [editedEmployee, setEditedEmployee] = useState(
     employee
       ? { ...employee }
@@ -15,7 +15,7 @@ export const EmployeeSavePopup = ({ employee, onClose }) => {
           lastName: "",
           about: "",
           email: "",
-          gender: "",
+          gender: "MALE",
           location: "",
           jobPosition: "",
         }
@@ -68,6 +68,8 @@ export const EmployeeSavePopup = ({ employee, onClose }) => {
         .then((response) => {
           console.log("Employee updated:", response.data);
 
+          fetchEmployees();
+
           toast.success("Employee has been updated!", {
             position: "top-right",
             autoClose: 2000,
@@ -101,6 +103,8 @@ export const EmployeeSavePopup = ({ employee, onClose }) => {
         )
         .then((response) => {
           console.log("Employee saved:", response.data);
+
+          fetchEmployees();
 
           toast.success("Employee has been saved!", {
             position: "top-right",
@@ -170,12 +174,15 @@ export const EmployeeSavePopup = ({ employee, onClose }) => {
               value={editedEmployee?.email}
               onChange={(e) => handleFieldChange("email", e.target.value)}
             />
-            <input
-              type="text"
-              placeholder="Gender"
-              value={editedEmployee?.gender}
+            <select
+              name="gender"
+              value="MALE"
               onChange={(e) => handleFieldChange("gender", e.target.value)}
-            />
+            >
+              <option value="MALE">Male</option>
+              <option value="FEMALE">Female</option>
+              <option value="OTHER">Other</option>
+            </select>
             <input
               type="text"
               placeholder="Location"
