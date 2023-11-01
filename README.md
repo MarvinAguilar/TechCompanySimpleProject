@@ -106,9 +106,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact 📧
 
-If you have any questions or need assistance, feel free to contact us:
+If you have any questions or need assistance, feel free to contact me:
 
 - Email: marvin.aguilar.jobs@gmail.com 📩
+- LinkedIn: [Marvin Aguilar Fuentes](https://www.linkedin.com/in/marvin-aguilar-fuentes) 🤖
 - GitHub: [Marvin Aguilar](https://github.com/MarvinAguilar) 🚀
 
 Thank you for using TechCompanySimpleProject! We hope it helps streamline your employee management. 🙌👨‍💼👩‍💼
