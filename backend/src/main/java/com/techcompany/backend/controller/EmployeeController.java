@@ -44,4 +44,9 @@ public class EmployeeController {
     public void deleteEmployee(@PathVariable String id) {
         employeeService.deleteEmployee(id);
     }
+
+    @GetMapping("/employee/search")
+    public List<Employee> searchEmployees(@RequestParam("query") String query) {
+        return employeeService.searchEmployees(query);
+    }
 }

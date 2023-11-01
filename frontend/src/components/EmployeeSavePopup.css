@@ -65,7 +65,7 @@
   min-height: 150px;
 }
 
-.popupbuttons {
+.popup-content .popupbuttons {
   width: 100%;
   margin-top: 1rem;
   padding-top: 1rem;
@@ -75,7 +75,7 @@
   border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.popupbuttons .btn {
+.popup-content .popupbuttons .btn {
   padding: 1rem 2.5rem;
   background-color: #885fc9;
   border-radius: 2rem;
@@ -95,4 +95,10 @@
 .popupbuttons .btn:active {
   transform: translateY(0);
   box-shadow: none;
+}
+
+.popup-content .popupbuttons .btn.disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
 }

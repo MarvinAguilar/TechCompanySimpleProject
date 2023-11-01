@@ -12,4 +12,5 @@ public interface IEmployeeService {
     Optional<Employee> getEmployeeByEmail(String email);
     Optional<Employee> updateEmployee(String id, Employee partialEmployee);
     void deleteEmployee(String id);
+    public List<Employee> searchEmployees(String query);
 }

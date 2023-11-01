@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
 import { EmployeeSavePopup } from "./EmployeeSavePopup";
 import { EmployeeInfoPopup } from "./EmployeeInfoPopup";
 import CardBackground from "../assets/card-bg.jpg";
@@ -29,19 +31,25 @@ export const EmployeeCard = ({ employee, setEmployees }) => {
   const handleDeleteEmployee = async (employeeId) => {
     try {
       const url = `http://localhost:8085/api/v1/techcompany/employee/${employeeId}`;
-      const response = await fetch(url, {
-        method: "DELETE",
-      });
+      const response = await axios.delete(url);
 
-      if (!response.ok) {
+      if (response.status === 200) {
+        setEmployees((prevEmployees) =>
+          prevEmployees.filter((employee) => employee.id !== employeeId)
+        );
+        toast.success("Employee has been deleted!", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+      } else {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
-      setEmployees((prevEmployees) =>
-        prevEmployees.filter((employee) => employee.id !== employeeId)
-      );
     } catch (error) {
       console.error(error);
+      toast.error("Failed to delete employee. Please try again.", {
+        position: "top-right",
+        autoClose: 2000,
+      });
     }
   };
 
@@ -84,6 +92,8 @@ export const EmployeeCard = ({ employee, setEmployees }) => {
       {isEditPopupOpen && (
         <EmployeeSavePopup employee={employee} onClose={handleCloseEditPopup} />
       )}
+
+      <ToastContainer position="top-right" autoClose={2000} />
     </div>
   );
 };

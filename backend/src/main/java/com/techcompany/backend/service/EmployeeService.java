@@ -3,6 +3,7 @@ package com.techcompany.backend.service;
 import com.techcompany.backend.collection.Employee;
 import com.techcompany.backend.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Optional;
 public class EmployeeService implements IEmployeeService {
 
     private final EmployeeRepository employeeRepository;
+    private final MongoTemplate mongoTemplate;
 
     @Override
     public List<Employee> getAllEmployees() {
@@ -74,5 +76,10 @@ public class EmployeeService implements IEmployeeService {
     @Override
     public void deleteEmployee(String id) {
         employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Employee> searchEmployees(String query) {
+        return employeeRepository.findBySearchCriteria(query);
     }
 }

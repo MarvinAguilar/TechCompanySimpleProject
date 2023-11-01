@@ -32,6 +32,19 @@ export const EmployeeSavePopup = ({ employee, onClose }) => {
     const { firstName, lastName, jobPosition, about, email, gender, location } =
       editedEmployee;
 
+    if (!employee) {
+      return !!(
+        editedEmployee.id &&
+        firstName &&
+        lastName &&
+        jobPosition &&
+        about &&
+        email &&
+        gender &&
+        location
+      );
+    }
+
     return !!(
       firstName &&
       lastName &&
@@ -173,7 +186,7 @@ export const EmployeeSavePopup = ({ employee, onClose }) => {
           <div className="popupbuttons">
             <button
               onClick={employee ? handleUpdate : handleSave}
-              className="btn"
+              className={`btn ${!validateForm() && "disabled"}`}
               disabled={!validateForm()}
             >
               Save

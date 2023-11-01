@@ -1,33 +1,30 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import { EmployeeCard } from "./components/EmployeeCard";
-import "./App.css";
 import { ToolWrapper } from "./components/ToolWrapper";
+import "./App.css";
 
 function App() {
-  const [search, setSearch] = useState("");
   const [employees, setEmployees] = useState([]);
-
-  const handleSearch = () => {
-    console.log("Search");
-  };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const url = "http://localhost:8085/api/v1/techcompany/employees";
-        const response = await fetch(url);
-        if (!response.ok) {
+        const response = await axios.get(url);
+
+        if (response.status === 200) {
+          setEmployees(response.data);
+        } else {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        const data = await response.json();
-        setEmployees(data);
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchData();
-  }, [employees]);
+  }, []);
 
   return (
     <>
@@ -35,21 +32,23 @@ function App() {
         <div className="container">
           <h1 className="heading">OUR EXCEPTIONAL TEAM</h1>
 
-          <ToolWrapper
-            search={search}
-            setSearch={setSearch}
-            handleSearch={handleSearch}
-          />
+          <ToolWrapper setEmployees={setEmployees} />
 
-          <div className="card-wrapper">
-            {employees.map((employee) => (
-              <EmployeeCard
-                key={employee.id}
-                employee={employee}
-                setEmployees={setEmployees}
-              />
-            ))}
-          </div>
+          {employees.length > 0 ? (
+            <div className="card-wrapper">
+              {employees.map((employee) => (
+                <EmployeeCard
+                  key={employee.id}
+                  employee={employee}
+                  setEmployees={setEmployees}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="not-found">
+              <h1>No employees were found.</h1>
+            </div>
+          )}
         </div>
       </section>
     </>
