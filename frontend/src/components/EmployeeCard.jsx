@@ -33,7 +33,7 @@ export const EmployeeCard = ({ employee, setEmployees, fetchEmployees }) => {
       const url = `http://localhost:8085/api/v1/techcompany/employee/${employeeId}`;
       const response = await axios.delete(url);
 
-      if (response.status === 200) {
+      if (response.status === 204) {
         setEmployees((prevEmployees) =>
           prevEmployees.filter((employee) => employee.id !== employeeId)
         );

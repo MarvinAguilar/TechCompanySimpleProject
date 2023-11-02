@@ -3,6 +3,8 @@ package com.techcompany.backend.controller;
 import com.techcompany.backend.collection.Employee;
 import com.techcompany.backend.service.EmployeeService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,37 +18,84 @@ public class EmployeeController {
     private final EmployeeService employeeService;
 
     @GetMapping("/employees")
-    public List<Employee> fetchAllEmployees() {
-        return employeeService.getAllEmployees();
+    public ResponseEntity<List<Employee>> fetchAllEmployees() {
+        try {
+            List<Employee> employees = employeeService.getAllEmployees();
+            return ResponseEntity.ok(employees);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @GetMapping("/employee/{id}")
-    public Optional<Employee> getEmployeeById(@PathVariable String id) {
-        return employeeService.getEmployeeById(id);
+    public ResponseEntity<Optional<Employee>> getEmployeeById(@PathVariable String id) {
+        try {
+            Optional<Employee> employee = employeeService.getEmployeeById(id);
+            if (employee.isPresent()) {
+                return ResponseEntity.ok(employee);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @GetMapping("/employee")
-    public Optional<Employee> getEmployeeByEmail(@RequestParam("email") String email) {
-        return employeeService.getEmployeeByEmail(email);
+    public ResponseEntity<Optional<Employee>> getEmployeeByEmail(@RequestParam("email") String email) {
+        try {
+            Optional<Employee> employee = employeeService.getEmployeeByEmail(email);
+            if (employee.isPresent()) {
+                return ResponseEntity.ok(employee);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @PostMapping("/addEmployee")
-    public String saveEmployee(@RequestBody Employee employee) {
-        return employeeService.saveEmployee(employee);
+    public ResponseEntity<String> saveEmployee(@RequestBody Employee employee) {
+        try {
+            String result = employeeService.saveEmployee(employee);
+            return ResponseEntity.ok(result);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @PatchMapping("/employee/{id}")
-    public Optional<Employee> updateEmployee(@PathVariable String id, @RequestBody Employee partialEmployee) {
-        return employeeService.updateEmployee(id, partialEmployee);
+    public ResponseEntity<Optional<Employee>> updateEmployee(@PathVariable String id, @RequestBody Employee partialEmployee) {
+        try {
+            Optional<Employee> updatedEmployee = employeeService.updateEmployee(id, partialEmployee);
+            if (updatedEmployee.isPresent()) {
+                return ResponseEntity.ok(updatedEmployee);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
     @DeleteMapping("/employee/{id}")
-    public void deleteEmployee(@PathVariable String id) {
-        employeeService.deleteEmployee(id);
+    public ResponseEntity<Void> deleteEmployee(@PathVariable String id) {
+        try {
+            employeeService.deleteEmployee(id);
+            return ResponseEntity.noContent().build();
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @GetMapping("/employee/search")
-    public List<Employee> searchEmployees(@RequestParam("query") String query) {
-        return employeeService.searchEmployees(query);
+    public ResponseEntity<List<Employee>> searchEmployees(@RequestParam("query") String query) {
+        try {
+            List<Employee> employees = employeeService.searchEmployees(query);
+            return ResponseEntity.ok(employees);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 }

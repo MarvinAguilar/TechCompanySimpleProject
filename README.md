@@ -14,6 +14,8 @@ TechCompanySimpleProject is a straightforward CRUD (Create, Read, Update, Delete
 - 💻 Seamless front-end experience powered by React.
 - ⚙️ Reliable back-end functionality provided by Spring Boot.
 
+![Texto alternativo](images/main-page.png)
+
 ## Prerequisites 🛠️
 
 Before you begin, ensure you have met the following requirements:
@@ -31,7 +33,7 @@ To get started with TechCompanySimpleProject, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/TechCompanySimpleProject.git
+   git clone https://github.com/MarvinAguilar/TechCompanySimpleProject.git
    ```
 
 2. Change into the project directory:
@@ -49,7 +51,7 @@ To get started with TechCompanySimpleProject, follow these steps:
 
    # Backend (Spring Boot) ⚙️
    cd ../backend
-   ./mvnw clean install
+   mvnw clean install
    ```
 
 ## Usage 🚦
@@ -62,7 +64,7 @@ To run the application, follow these steps:
 
    ```bash
    # From the 'backend' directory ⚙️
-   ./mvnw spring-boot:run
+   mvnw spring-boot:run
    ```
 
 3. Start the React frontend:

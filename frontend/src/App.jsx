@@ -22,7 +22,6 @@ function App() {
     }
   };
 
-  // Use the useEffect to call the fetchEmployees function
   useEffect(() => {
     fetchEmployees();
   }, [setEmployees]);
