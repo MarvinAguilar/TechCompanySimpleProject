@@ -65,6 +65,16 @@ public class EmployeeController {
         }
     }
 
+    @PostMapping("/addEmployees")
+    public ResponseEntity<List<String>> saveEmployees(@RequestBody List<Employee> employees) {
+        try {
+            List<String> savedEmployeeIds = employeeService.saveManyEmployees(employees);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedEmployeeIds);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
     @PatchMapping("/employee/{id}")
     public ResponseEntity<Optional<Employee>> updateEmployee(@PathVariable String id, @RequestBody Employee partialEmployee) {
         try {

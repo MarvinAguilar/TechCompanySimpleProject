@@ -6,6 +6,7 @@ import com.techcompany.backend.repository.EmployeeRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,6 +31,22 @@ public class EmployeeService implements IEmployeeService {
             return employeeRepository.save(employee).getId();
         } catch (Exception e) {
             throw new EmployeeSaveException("Error saving the employee", e);
+        }
+    }
+
+    @Override
+    public List<String> saveManyEmployees(List<Employee> employees) {
+        try {
+            List<String> savedEmployeeIds = new ArrayList<>();
+
+            for (Employee employee : employees) {
+                String employeeId = employeeRepository.save(employee).getId();
+                savedEmployeeIds.add(employeeId);
+            }
+
+            return savedEmployeeIds;
+        } catch (Exception e) {
+            throw new EmployeeSaveException("Error saving employees", e);
         }
     }
 

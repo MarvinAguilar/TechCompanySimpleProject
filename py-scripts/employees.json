@@ -1,0 +1,62 @@
+[
+  {
+    "id": "116830152",
+    "firstName": "Marvin",
+    "lastName": "Aguilar",
+    "about": "I'm a software developer dedicated to creating efficient and impactful solutions through coding and problem-solving.",
+    "email": "marvin.aguilar.jobs@email.com",
+    "gender": "MALE",
+    "location": "Heredia, Costa Rica",
+    "jobPosition": "Software Engineer"
+  },
+  {
+    "id": "123456789",
+    "firstName": "Alice",
+    "lastName": "Smith",
+    "about": "I'm a web designer and front-end developer with a passion for creating beautiful and user-friendly websites.",
+    "email": "alice.smith@example.com",
+    "gender": "FEMALE",
+    "location": "Los Angeles, USA",
+    "jobPosition": "Front-End Developer"
+  },
+  {
+    "id": "987654321",
+    "firstName": "Bob",
+    "lastName": "Johnson",
+    "about": "I'm a data scientist specializing in machine learning and artificial intelligence. I love building predictive models and solving complex problems.",
+    "email": "bob.johnson@example.com",
+    "gender": "MALE",
+    "location": "San Francisco, USA",
+    "jobPosition": "Data Scientist"
+  },
+  {
+    "id": "246813579",
+    "firstName": "Sara",
+    "lastName": "Davis",
+    "about": "I'm a graphic designer and illustrator. I'm passionate about visual storytelling and creating unique and eye-catching designs.",
+    "email": "sara.davis@example.com",
+    "gender": "FEMALE",
+    "location": "London, UK",
+    "jobPosition": "Graphic Designer"
+  },
+  {
+    "id": "135792468",
+    "firstName": "David",
+    "lastName": "Brown",
+    "about": "I'm a full-stack developer with expertise in both front-end and back-end technologies. I enjoy building scalable and responsive web applications.",
+    "email": "david.brown@example.com",
+    "gender": "MALE",
+    "location": "Cuba",
+    "jobPosition": "Full-Stack Developer"
+  },
+  {
+    "id": "112233445",
+    "firstName": "Emily",
+    "lastName": "Clark",
+    "about": "I'm a marketing specialist with a focus on digital marketing strategies and content creation. I believe in the power of storytelling to engage and inspire audiences.",
+    "email": "emily.clark@example.com",
+    "gender": "FEMALE",
+    "location": "Toronto, Canada",
+    "jobPosition": "Marketing Specialist"
+  }
+]

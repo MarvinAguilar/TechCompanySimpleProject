@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface IEmployeeService {
     public List<Employee> getAllEmployees();
     public String saveEmployee(Employee employee);
+    public List<String> saveManyEmployees(List<Employee> employees);
     Optional<Employee> getEmployeeById(String id);
     Optional<Employee> getEmployeeByEmail(String email);
     Optional<Employee> updateEmployee(String id, Employee partialEmployee);
